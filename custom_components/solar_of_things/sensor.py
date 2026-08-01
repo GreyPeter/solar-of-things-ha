@@ -22,7 +22,7 @@ _LOGGER = logging.getLogger(__name__)
 
 # Map sensor key → translation_key (snake_case)
 _TRANSLATION_KEYS: dict[str, str] = {
-    "generationPower": "pv_charging_power",
+    "generationPower": "pv_input_power",
     "pvInputVoltage1": "pv_charging_voltage",
     "pv1InputCurrentForBattery": "pv_input_current",
     "acOutputActivePower": "ac_output_active_power",
@@ -30,7 +30,7 @@ _TRANSLATION_KEYS: dict[str, str] = {
     "batteryChargingCurrent": "battery_charging_current",
     "batteryVoltage": "battery_voltage",
     "batteryPower": "battery_power",
-    "batteryCapacity": "battery_capacity",
+    "batteryCapacity": "battery_soc",
     "feedInPower": "feed_in_power",
     "gridPower": "grid_power",
     "loadPower": "load_power",
