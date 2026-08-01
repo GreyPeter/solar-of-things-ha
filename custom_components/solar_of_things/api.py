@@ -657,7 +657,7 @@ class SolarOfThingsAPI:
         charge = float(latest_values.get("batteryChargingCurrent") or 0)
         latest_values["batteryPower"] = (discharge - charge) * voltage
 
-        pv_power = float(latest_values.get("pvInputPower") or 0)
+        pv_power = float(latest_values.get("generationPower") or 0)
         ac_output = float(latest_values.get("acOutputActivePower") or 0)
         feed_in = float(latest_values.get("feedInPower") or 0)
         battery_power = float(latest_values.get("batteryPower") or 0)

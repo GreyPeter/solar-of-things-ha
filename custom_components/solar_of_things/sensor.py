@@ -34,7 +34,7 @@ _TRANSLATION_KEYS: dict[str, str] = {
     "feedInPower": "feed_in_power",
     "gridPower": "grid_power",
     "loadPower": "load_power",
-    "monthly_pv_generated": "monthly_pv_generated",
+    "pvGeneratedEnergy": "monthly_pv_generated",
     "monthly_grid_import": "monthly_grid_import",
     "monthly_total_consumption": "monthly_total_consumption",
     "monthly_solar_percentage": "monthly_solar_percentage",
