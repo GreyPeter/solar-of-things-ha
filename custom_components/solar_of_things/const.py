@@ -140,19 +140,19 @@ SENSOR_DEFINITIONS = {
         "icon": "mdi:home-lightning-bolt",
     },
     # Monthly summary sensors
-    "monthly_pv_generated": {
+    "pvGeneratedEnergy": {
         "name": "Monthly PV Generated",
         "unit": "kWh",
         "device_class": "energy",
         "icon": "mdi:solar-power",
     },
-    "monthly_grid_import": {
+    "buyElectricityQuantity": {
         "name": "Monthly Grid Import",
         "unit": "kWh",
         "device_class": "energy",
         "icon": "mdi:transmission-tower-import",
     },
-    "monthly_total_consumption": {
+    "consumeElectricityQuantity": {
         "name": "Monthly Total Consumption",
         "unit": "kWh",
         "device_class": "energy",
