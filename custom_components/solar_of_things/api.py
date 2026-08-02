@@ -100,10 +100,6 @@ _LOGGER = logging.getLogger(__name__)
 
 _DEFAULT_TZ = "Asia/Manila"
 
-# In api.py, add logging
-_LOGGER.debug("API request: %s", payload)
-_LOGGER.debug("API response: %s", response.text)
-
 # ──────────────────────────────────────────────────────────────────────────────
 # Custom exceptions
 # ──────────────────────────────────────────────────────────────────────────────
