@@ -703,8 +703,9 @@ class SolarOfThingsAPI:
 
         # Extract monthly totals (fallback: look for known keys)
         monthly: dict[str, Any] = {}
-        pv_total = result.get(month_key) or result.get("pvTotal") or result.get("pv") or result.get("pvGeneratedEnergy") or 0
-        monthly["monthly_pv_generated"] = float(pv_total or 999)
+        #pv_total = result.get(month_key) or result.get("pvTotal") or result.get("pv") or result.get("pvGeneratedEnergy") or 0
+        pv_total = result.get(month_key) or result.get("pvGeneratedEnergy") or result.get("pvGeneratedEnergy") or 0
+        monthly["monthly_pv_generated"] = float(pv_total or 2)
 
         grid_import = result.get("gridImport") or result.get("buy") or result.get("buyElectricityQuantity") or 0
         monthly["monthly_grid_import"] = float(grid_import or 999)
