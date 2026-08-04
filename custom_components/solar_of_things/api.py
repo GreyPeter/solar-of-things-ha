@@ -691,7 +691,7 @@ class SolarOfThingsAPI:
             )
 
         props = (((data.get("data") or {}).get("properties")) or
-                 (data.get("data") or {}).get("timePoints") or
+                 (data.get("data") or {}).get("list") or
                  [])
 
         result: dict[str, Any] = {}
@@ -703,21 +703,22 @@ class SolarOfThingsAPI:
 
         # Extract monthly totals (fallback: look for known keys)
         monthly: dict[str, Any] = {}
-        pv_total = result.get(month_key) or result.get("pvTotal") or result.get("pv") or 0
-        monthly["monthly_pv_generated"] = float(pv_total or 0)
+        #pv_total = result.get(month_key) or result.get("pvTotal") or result.get("pv") or result.get("pvGeneratedEnergy") or 0
+        pv_total = result.get(month_key) or result.get("pvGeneratedEnergy") or result.get("pvGeneratedEnergy") or 0
+        monthly["monthly_pv_generated"] = float(pv_total or 2)
 
-        grid_import = result.get("gridImport") or result.get("buy") or 0
-        monthly["monthly_grid_import"] = float(grid_import or 0)
+        grid_import = result.get("gridImport") or result.get("buy") or result.get("buyElectricityQuantity") or 0
+        monthly["monthly_grid_import"] = float(grid_import or 999)
 
-        total_consumption = result.get("totalConsumption") or result.get("load") or 0
-        monthly["monthly_total_consumption"] = float(total_consumption or 0)
+        total_consumption = result.get("totalConsumption") or result.get("load") or result.get("consumeElectricityQuantity") or 0
+        monthly["monthly_total_consumption"] = float(total_consumption or 999)
 
         if monthly["monthly_total_consumption"] > 0:
             monthly["monthly_solar_percentage"] = round(
                 100.0 * monthly["monthly_pv_generated"] / monthly["monthly_total_consumption"], 1
             )
         else:
-            monthly["monthly_solar_percentage"] = 0.0
+            monthly["monthly_solar_percentage"] = 99.9
 
         return monthly
 
