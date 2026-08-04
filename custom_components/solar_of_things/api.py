@@ -693,7 +693,7 @@ class SolarOfThingsAPI:
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
                  [])
-echo "TEST"
+
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
             k = item.get("key") or item.get("name")
