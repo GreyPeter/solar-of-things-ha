@@ -702,15 +702,16 @@ class SolarOfThingsAPI:
                 result[k] = v
 
         # Extract monthly totals (fallback: look for known keys)
+        count = result.count
         monthly: dict[str, Any] = {}
-        pv_total = result.get(month_key) or result.get("pvTotal") or result.get("pv") or result.get("pvGeneratedEnergy") or 0
-        monthly["monthly_pv_generated"] = float(pv_total or 999)
+        pv_total = result.get(month_key) or result.get("pvTotal") or result.get("pv") or 0
+        monthly["monthly_pv_generated"] = float(pv_total or count)
 
         grid_import = result.get("gridImport") or result.get("buy") or result.get("buyElectricityQuantity") or 0
-        monthly["monthly_grid_import"] = float(grid_import or 999)
+        monthly["monthly_grid_import"] = float(grid_import or 0)
 
         total_consumption = result.get("totalConsumption") or result.get("load") or result.get("consumeElectricityQuantity") or 0
-        monthly["monthly_total_consumption"] = float(total_consumption or 999)
+        monthly["monthly_total_consumption"] = float(total_consumption or 0)
 
         if monthly["monthly_total_consumption"] > 0:
             monthly["monthly_solar_percentage"] = round(
