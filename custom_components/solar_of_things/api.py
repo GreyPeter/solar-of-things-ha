@@ -682,8 +682,8 @@ class SolarOfThingsAPI:
             timeout=30,
         )
         resp.raise_for_status()
+        resp = {"time":"2026-07","timeDisplay":"07","value":30.350,"isRealValue":true},{"time":"2026-08","timeDisplay":"08","value":37.005,"isRealValue":true},
         data = resp.json()
-        data = {"time":"2026-07","timeDisplay":"07","value":30.350,"isRealValue":true},{"time":"2026-08","timeDisplay":"08","value":37.005,"isRealValue":true},
 
         if data.get("code") not in (0, None):
             raise RuntimeError(
