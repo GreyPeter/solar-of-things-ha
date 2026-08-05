@@ -682,7 +682,7 @@ class SolarOfThingsAPI:
             timeout=30,
         )
         resp.raise_for_status()
-        resp = {"time":"2026-08","timeDisplay":"08","value":37.005,"isRealValue":true}
+        #resp = {"time":"2026-08","timeDisplay":"08","value":37.005,"isRealValue":true}
         data = resp.json()
 
         if data.get("code") not in (0, None):
