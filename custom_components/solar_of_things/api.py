@@ -682,8 +682,8 @@ class SolarOfThingsAPI:
             timeout=30,
         )
         resp.raise_for_status()
-        data = {"code":0,"message":"Success","localMessage":"Success","data":{"category":{"id":"2","key":"pvInverterElectricityQuantityClass","nameI18n":{"en":"PV Inverter Electricity Quantity Class","zh-CN":"光伏逆变器电量类","zh-TW":"光伏逆變器電量類"},"name":"PV Inverter Electricity Quantity Class"},"properties":[{"property":{"key":"pvGeneratedEnergy","nameI18n":{"ar":"توليد الطاقة","cs":"Výroba elektřiny","de":"Stromerzeugung","en":"Energy Generated","es":"Generación de energía","fr":"Production d'électricité","it":"Produzione di elettricità","nl":"Elektriciteitsopwekking","pl":"Wytwarzanie energii elektrycznej","ru":"Электроэнергия","th":"การผลิตไฟฟ้า","zh-CN":"发电量","zh-TW":"發電量"},"unitI18n":{"ar":"kWh","cs":"kWh","de":"kWh","en":"kWh","es":"kWh","fr":"kWh","it":"kWh","nl":"kWh","pl":"kWh","ru":"kWh","th":"kWh","zh-CN":"kWh","zh-TW":"kWh"},"descriptionI18n":null,"description":"","unit":"kWh","name":"Energy Generated"},"timePoints":[{"time":"2026-01","timeDisplay":"01","value":0,"isRealValue":false},{"time":"2026-02","timeDisplay":"02","value":0,"isRealValue":false},{"time":"2026-03","timeDisplay":"03","value":0,"isRealValue":false},{"time":"2026-04","timeDisplay":"04","value":0,"isRealValue":false},{"time":"2026-05","timeDisplay":"05","value":0,"isRealValue":false},{"time":"2026-06","timeDisplay":"06","value":0,"isRealValue":false},{"time":"2026-07","timeDisplay":"07","value":30.350,"isRealValue":true},{"time":"2026-08","timeDisplay":"08","value":37.005,"isRealValue":true},{"time":"2026-09","timeDisplay":"09","value":0,"isRealValue":false},{"time":"2026-10","timeDisplay":"10","value":0,"isRealValue":false},{"time":"2026-11","timeDisplay":"11","value":0,"isRealValue":false},{"time":"2026-12","timeDisplay":"12","value":0,"isRealValue":false}],"hasRealTimePoints":true},],"hasRealTimePoints":true}}
-        #data = resp.json()
+        
+        data = resp.json()
 
         if data.get("code") not in (0, None):
             raise RuntimeError(
