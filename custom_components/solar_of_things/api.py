@@ -693,8 +693,7 @@ class SolarOfThingsAPI:
             )
             
         my_data = data.get("data")
-        if my_data is not None:
-          print(f"solar_of_things - data not None")
+        
         my_name = my_data("name")
         if my_name is not None:
           print(f"solar_of_things - my_name not None")
