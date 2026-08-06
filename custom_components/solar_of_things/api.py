@@ -692,10 +692,12 @@ class SolarOfThingsAPI:
                 f"message={data.get('message')}"
             )
             
-        my_data = data["data"][0]
+        my_data = data.get("data")
         if my_data is not None:
           print(f"solar_of_things - data not None")
-
+        my_name = my_data(name)
+        if my_name is not None:
+          print(f"solar_of_things - my_name not None")
           #my_category = data.get("category")
         #if my_category is not None:
           #my_id = my_data.get("id")
