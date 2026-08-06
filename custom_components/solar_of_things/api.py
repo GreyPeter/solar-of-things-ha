@@ -684,6 +684,7 @@ class SolarOfThingsAPI:
         resp.raise_for_status()
         
         data = resp.json()
+        log.info("data = ",data.get("code"))
 
         if data.get("code") not in (0, None):
             raise RuntimeError(
@@ -691,8 +692,6 @@ class SolarOfThingsAPI:
                 f"message={data.get('message')}"
             )
 
-        code = data.get("code")
-        log.info("Code = ", code)
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
                  [])
