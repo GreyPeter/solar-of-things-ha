@@ -698,7 +698,7 @@ class SolarOfThingsAPI:
 
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
-        print("key = ",k)
+        log.info("key = ",k)
             k = item.get("key") or item.get("name")
             v = item.get("value")
             if k and v is not None:
