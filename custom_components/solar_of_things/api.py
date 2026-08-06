@@ -695,10 +695,10 @@ class SolarOfThingsAPI:
         my_data = data.get("data")
         my_category = my_data.get("category")
         my_prop = my_data.get("properties")
-        my_timepoints = my_prop.get("timePoints")
+        my_property = my_prop.get("property")
         #my_list = my_data.get("list")
-        if my_timepoints is not None:
-          print(f"solar_of_things - my_timepoints not None")
+        if my_property is not None:
+          print(f"solar_of_things - my_property not None")
                   
         #if my_list is not None:
           #print(f"solar_of_things - List {my_list}")
