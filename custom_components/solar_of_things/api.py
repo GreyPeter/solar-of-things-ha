@@ -697,7 +697,7 @@ class SolarOfThingsAPI:
                  (data.get("data") or {}).get("list") or
                  [])
 
-        print(f"solar_of_things - props {props}")
+        #print(f"solar_of_things - props {props}")
           
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
