@@ -727,7 +727,7 @@ class SolarOfThingsAPI:
                 100.0 * monthly["monthly_pv_generated"] / monthly["monthly_total_consumption"], 1
             )
         else:
-            monthly["monthly_solar_percentage"] = 5.0
+            monthly["monthly_solar_percentage"] = 0.0
 
         return monthly
 
