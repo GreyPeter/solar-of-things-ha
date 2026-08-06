@@ -670,7 +670,7 @@ class SolarOfThingsAPI:
 
     def fetch_monthly_summary(self, station_id: str) -> dict[str, Any]:
         """Fetch monthly PV summary for the current month."""
-        _LOGGER.debug("Fetching monthly PV summary for the current month.")
+        logging.info("Fetching monthly PV summary for the current month.")
         now = self._now()
         year = now.year
         month_key = f"{year}-{str(now.month).zfill(2)}"
