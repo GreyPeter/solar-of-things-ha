@@ -696,18 +696,12 @@ class SolarOfThingsAPI:
         my_category = my_data.get("category")
         my_prop = my_data.get("properties")
         my_timepoints = my_prop.get("timePoints")
-        my_list = my_data.get("list")
+        #my_list = my_data.get("list")
         if my_timepoints is not None:
           print(f"solar_of_things - my_timepoints not None")
-          
-          #my_category = data.get("category")
-        #if my_category is not None:
-          #my_id = my_data.get("id")
-        #_LOGGER.debug("solar_of_things: my_key %s", my_id)
-        #print(f"solar_of_things - key = {my_id}")
-        
-        if my_list is not None:
-          print(f"solar_of_things - List {my_list}")
+                  
+        #if my_list is not None:
+          #print(f"solar_of_things - List {my_list}")
 
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
