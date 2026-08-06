@@ -670,7 +670,7 @@ class SolarOfThingsAPI:
 
     def fetch_monthly_summary(self, station_id: str) -> dict[str, Any]:
         """Fetch monthly PV summary for the current month."""
-        logging.info("Fetching monthly PV summary for the current month.")
+        logging.info("solar_of_things - Fetching monthly PV summary for the current month.")
         now = self._now()
         year = now.year
         month_key = f"{year}-{str(now.month).zfill(2)}"
@@ -728,7 +728,7 @@ class SolarOfThingsAPI:
                 100.0 * monthly["monthly_pv_generated"] / monthly["monthly_total_consumption"], 1
             )
         else:
-            monthly["monthly_solar_percentage"] = 0.0
+            monthly["monthly_solar_percentage"] = 1.0
 
         return monthly
 
