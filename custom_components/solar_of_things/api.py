@@ -703,7 +703,7 @@ class SolarOfThingsAPI:
         for item in props if isinstance(props, list) else []:
             #k = item.get("key") or item.get("name")
             property = item.get("property")
-            k = item.get("property") or item.get("name")
+            k = item.get("key") or item.get("name")
             print(f"solar_of_things - property = {property}")
             v = item.get("value")
             #print(f"solar_of_things - value = {v}")
