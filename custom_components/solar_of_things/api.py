@@ -695,10 +695,10 @@ class SolarOfThingsAPI:
         my_data = data.get("data")
         my_category = my_data.get("category")
         my_prop = my_data.get("properties")
-        my_property = my_prop.get("property")
+        #my_property = my_prop.get("property")
         #my_list = my_data.get("list")
-        if my_property is not None:
-          print(f"solar_of_things - my_property not None")
+        #if my_property is not None:
+          #print(f"solar_of_things - my_property not None")
                   
         #if my_list is not None:
           #print(f"solar_of_things - List {my_list}")
@@ -707,6 +707,8 @@ class SolarOfThingsAPI:
                  (data.get("data") or {}).get("list") or
                  [])
 
+        print(f"solar_of_things - props {props}")
+          
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
             k = item.get("key") or item.get("name")
