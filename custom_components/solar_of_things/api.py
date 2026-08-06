@@ -701,6 +701,7 @@ class SolarOfThingsAPI:
             v = item.get("value")
             if k and v is not None:
                 result[k] = v
+                print(k,v)
 
         # Extract monthly totals (fallback: look for known keys)
         monthly: dict[str, Any] = {}
