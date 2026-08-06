@@ -690,6 +690,9 @@ class SolarOfThingsAPI:
                 f"Monthly summary error code={data.get('code')} "
                 f"message={data.get('message')}"
             )
+            
+        code = data.get("code")
+        print("Code = ", code)
 
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
@@ -698,7 +701,6 @@ class SolarOfThingsAPI:
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
             k = item.get("key") or item.get("name")
-            log.info("key = ",k)
             v = item.get("value")
             if k and v is not None:
                 result[k] = v
