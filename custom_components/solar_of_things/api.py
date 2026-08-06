@@ -694,9 +694,9 @@ class SolarOfThingsAPI:
             
         my_data = data.get("data")
         
-        my_name = my_data.get("name")
+        my_name = my_data.get("category")
         if my_name is not None:
-          print(f"solar_of_things - my_name not None")
+          print(f"solar_of_things - category not None")
           #my_category = data.get("category")
         #if my_category is not None:
           #my_id = my_data.get("id")
