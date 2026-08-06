@@ -695,9 +695,9 @@ class SolarOfThingsAPI:
         my_data = data.get("data")
         ny_name = my_data.get("name")
         #_LOGGER.debug("SolarOfThings: logging in as %s", self._user_id)
-        print(f"solar_of_things - Data = {ny_name}")
-        my_properties = data.get("localMessage")
-        print(f"solar_of_things - LocalMessage = {my_properties}")
+        print(f"solar_of_things - Name = {ny_name}")
+        my_properties = data.get("timePoints")
+        print(f"solar_of_things - timePoints = {my_properties}")
 
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
@@ -706,9 +706,9 @@ class SolarOfThingsAPI:
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
             k = item.get("key") or item.get("name")
-            print(f"solar_of_things - key = {k}")
+            #print(f"solar_of_things - key = {k}")
             v = item.get("value")
-            print(f"solar_of_things - value = {v}")
+            #print(f"solar_of_things - value = {v}")
             if k and v is not None:
                 result[k] = v
 
