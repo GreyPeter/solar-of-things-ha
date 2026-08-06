@@ -693,7 +693,7 @@ class SolarOfThingsAPI:
             )
             
         my_data = data.get("data")
-        
+        my_category = my_data.get("category")
         my_prop = my_data.get("properties")
         my_list = my_data.get("list")
         if my_prop and my_list is not None:
