@@ -705,8 +705,8 @@ class SolarOfThingsAPI:
         #_LOGGER.debug("solar_of_things: my_key %s", my_id)
         #print(f"solar_of_things - key = {my_id}")
         
-        if my_category is not None:
-          print(f"solar_of_things - categories {my_category}")
+        if my_data is not None:
+          print(f"solar_of_things - Data {my_data}")
 
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
