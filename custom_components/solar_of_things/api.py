@@ -695,9 +695,9 @@ class SolarOfThingsAPI:
         my_data = data.get("message")
         test = "TEST"
         #_LOGGER.debug("SolarOfThings: logging in as %s", self._user_id)
-        print("solar_of_things - Data = %s", test)
+        print(f"solar_of_things - Data = {my_data}")
         #my_properties = data.get("localMessage")
-        _LOGGER.info("solar_of_things - Properties = %s", test)
+        #_LOGGER.info("solar_of_things - Properties = %s", test)
 
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
