@@ -694,11 +694,13 @@ class SolarOfThingsAPI:
             
         my_data = data.get("data")
         if my_data is not None:
-          my_category = data.get("category")
-        if my_category is not None:
-          my_id = my_data.get("id")
-        _LOGGER.debug("solar_of_things: my_key %s", my_id)
-        print(f"solar_of_things - key = {my_id}")
+          print(f"solar_of_things - data not None")
+
+          #my_category = data.get("category")
+        #if my_category is not None:
+          #my_id = my_data.get("id")
+        #_LOGGER.debug("solar_of_things: my_key %s", my_id)
+        #print(f"solar_of_things - key = {my_id}")
         my_properties = data.get("properties")
         if my_properties is not None:
           print(f"solar_of_things - properties not None")
