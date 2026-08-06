@@ -691,8 +691,8 @@ class SolarOfThingsAPI:
                 f"message={data.get('message')}"
             )
             
-        code = data.get("code")
-        _LOGGER.info("solar_of_things - Code = ")
+        my_data = data.get("data")
+        _LOGGER.info("solar_of_things - Data = ", my_data)
 
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
