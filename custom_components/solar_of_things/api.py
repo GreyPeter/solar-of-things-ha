@@ -695,7 +695,7 @@ class SolarOfThingsAPI:
         my_data = data.get("message")
         test = "TEST"
         #_LOGGER.debug("SolarOfThings: logging in as %s", self._user_id)
-        _LOGGER.debug("solar_of_things - Data = %s", test)
+        print("solar_of_things - Data = %s", test)
         #my_properties = data.get("localMessage")
         _LOGGER.info("solar_of_things - Properties = %s", test)
 
@@ -728,7 +728,7 @@ class SolarOfThingsAPI:
                 100.0 * monthly["monthly_pv_generated"] / monthly["monthly_total_consumption"], 1
             )
         else:
-            monthly["monthly_solar_percentage"] = 1.0
+            monthly["monthly_solar_percentage"] = 2.0
 
         return monthly
 
