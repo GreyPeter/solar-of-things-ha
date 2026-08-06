@@ -705,7 +705,7 @@ class SolarOfThingsAPI:
             k = item.get("time") or item.get("name")
             print(f"solar_of_things - key = {k}")
             v = item.get("value")
-            print(f"solar_of_things - value = {v}")
+            #print(f"solar_of_things - value = {v}")
             if k and v is not None:
                 result[k] = v
 
