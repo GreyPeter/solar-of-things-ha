@@ -691,9 +691,9 @@ class SolarOfThingsAPI:
                 f"message={data.get('message')}"
             )
             
-        my_data = data.get("data")
+        my_data = data.get("message")
         _LOGGER.info("solar_of_things - Data = ", my_data)
-        my_properties = data.get("properties")
+        my_properties = data.get("localMessage")
         _LOGGER.info("solar_of_things - Properties = ", my_properties)
 
         props = (((data.get("data") or {}).get("properties")) or
