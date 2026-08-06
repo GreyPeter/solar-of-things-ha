@@ -684,7 +684,6 @@ class SolarOfThingsAPI:
         resp.raise_for_status()
         
         data = resp.json()
-        log.info("data = ",data)
 
         if data.get("code") not in (0, None):
             raise RuntimeError(
@@ -699,6 +698,7 @@ class SolarOfThingsAPI:
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
             k = item.get("key") or item.get("name")
+            log.info("key = ",k)
             v = item.get("value")
             if k and v is not None:
                 result[k] = v
