@@ -706,9 +706,9 @@ class SolarOfThingsAPI:
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
             k = item.get("key") or item.get("name")
-            #_LOGGER.info("solar_of_things - key = %s", k)
+            print(f"solar_of_things - key = {k}")
             v = item.get("value")
-            #_LOGGER.info("solar_of_things - value = %s", v)
+            print(f"solar_of_things - value = {v}")
             if k and v is not None:
                 result[k] = v
 
@@ -728,7 +728,7 @@ class SolarOfThingsAPI:
                 100.0 * monthly["monthly_pv_generated"] / monthly["monthly_total_consumption"], 1
             )
         else:
-            monthly["monthly_solar_percentage"] = 2.0
+            monthly["monthly_solar_percentage"] = 3.0
 
         return monthly
 
