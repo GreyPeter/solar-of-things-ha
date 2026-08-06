@@ -692,7 +692,7 @@ class SolarOfThingsAPI:
                 f"message={data.get('message')}"
             )
             
-        my_data = data.get("message")
+        my_data = json.dumps(data)
         #_LOGGER.debug("SolarOfThings: logging in as %s", self._user_id)
         print(f"solar_of_things - Data = {my_data}")
         my_properties = data.get("localMessage")
