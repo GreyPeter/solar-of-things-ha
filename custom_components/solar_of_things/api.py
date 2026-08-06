@@ -692,16 +692,6 @@ class SolarOfThingsAPI:
                 f"message={data.get('message')}"
             )
             
-        my_data = data.get("data")
-        my_category = my_data.get("category")
-        my_prop = my_data.get("properties")
-        #my_property = my_prop.get("property")
-        #my_list = my_data.get("list")
-        #if my_property is not None:
-          #print(f"solar_of_things - my_property not None")
-                  
-        #if my_list is not None:
-          #print(f"solar_of_things - List {my_list}")
 
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
@@ -711,10 +701,11 @@ class SolarOfThingsAPI:
           
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
-            k = item.get("key") or item.get("name")
-            #print(f"solar_of_things - key = {k}")
+            #k = item.get("key") or item.get("name")
+            k = item.get("time") or item.get("name")
+            print(f"solar_of_things - key = {k}")
             v = item.get("value")
-            #print(f"solar_of_things - value = {v}")
+            print(f"solar_of_things - value = {v}")
             if k and v is not None:
                 result[k] = v
 
