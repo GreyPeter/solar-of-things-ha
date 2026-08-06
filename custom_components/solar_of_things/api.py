@@ -698,10 +698,10 @@ class SolarOfThingsAPI:
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
             k = item.get("key") or item.get("name")
+            print("key = ",k)
             v = item.get("value")
             if k and v is not None:
                 result[k] = v
-                print(k,v)
 
         # Extract monthly totals (fallback: look for known keys)
         monthly: dict[str, Any] = {}
