@@ -693,9 +693,10 @@ class SolarOfThingsAPI:
             )
             
         my_data = data.get("data")
-        ny_name = my_data.get("name")
-        #_LOGGER.debug("SolarOfThings: logging in as %s", self._user_id)
-        print(f"solar_of_things - Name = {ny_name}")
+        my_category = data.get("category")
+        my_key = my_data.get("key")
+        _LOGGER.debug("solar_of_things: my_key %s", my_key)
+        print(f"solar_of_things - key = {my_key}")
         my_properties = data.get("timePoints")
         print(f"solar_of_things - timePoints = {my_properties}")
 
