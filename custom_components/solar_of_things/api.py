@@ -701,10 +701,10 @@ class SolarOfThingsAPI:
           
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
-            #k = item.get("key") or item.get("name")
-            property = item.get("property")
             k = item.get("key") or item.get("name")
-            print(f"solar_of_things - property = {property}")
+            time_points = item.get("timePoints")
+            #property = item.get("property")
+            print(f"solar_of_things - time points = {time_points}")
             v = item.get("value")
             #print(f"solar_of_things - value = {v}")
             if k and v is not None:
