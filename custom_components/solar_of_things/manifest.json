@@ -11,5 +11,6 @@
   "requirements": [
     "pycryptodome>=3.9.0"
   ],
-  "version": "2.4.2"
+  "version": "2.4.2",
+  "loggers": ["custom_components.solar-of-things-ha"]
 }
