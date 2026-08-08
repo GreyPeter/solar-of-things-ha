@@ -703,7 +703,9 @@ class SolarOfThingsAPI:
         for item in props if isinstance(props, list) else []:
         
             timePoints = item.get("timePoints")
-            _LOGGER.info(f"Time points = %s", timePoints)
+            #_LOGGER.info(f"Time points = %s", timePoints)
+            name = item.get("name")
+            _LOGGER.info(f"Name = %s", name)
 
             k = item.get("key") or item.get("name")
             v = item.get("value")
