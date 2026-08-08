@@ -698,12 +698,13 @@ class SolarOfThingsAPI:
                  [])
                  
         parsed_props = _json.loads(props)
+        property = parsed_props['property'])
         #for property in parsed_props['property']:
           #key = property['key']
           # Extracting values from the inner array
           #major_cities = ", ".join(region['cities'])
           #print(f"Major cities in {state_name}: {major_cities}")
-          _LOGGER.info(f"solar_of_things - parsed_props property = %s",parsed_props['property'])
+          _LOGGER.info(f"solar_of_things - parsed_props property = %s",property)
           
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
