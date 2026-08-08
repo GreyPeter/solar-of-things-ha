@@ -697,7 +697,12 @@ class SolarOfThingsAPI:
                  (data.get("data") or {}).get("list") or
                  [])
                  
-        #_LOGGER.info(f"solar_of_things - props = %s",props)
+        for property in parsed_data['property']:
+          key = property['key']
+          # Extracting values from the inner array
+          #major_cities = ", ".join(region['cities'])
+          #print(f"Major cities in {state_name}: {major_cities}")
+          _LOGGER.info(f"solar_of_things - key = %s",key)
           
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
