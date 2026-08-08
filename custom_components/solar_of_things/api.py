@@ -703,8 +703,8 @@ class SolarOfThingsAPI:
             timePoints = item.get('timePoints')
             property = item.get('property')
             k = property.get('key')
-            v = timePoints[7]
-            _LOGGER.info(f"Key = %sTime points = %s", k, v)
+            v = 61.728
+            _LOGGER.info(f"Key = %sTime points = %s", k, timePoints[7])
 
             #k = item.get("key") or item.get("name")
             #v = item.get("value")
