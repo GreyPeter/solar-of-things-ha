@@ -698,7 +698,7 @@ class SolarOfThingsAPI:
                  [])
                  
         parsed_props = _json.loads(props)
-        property = parsed_props['property'])
+        property = props.get('property')
         #for property in parsed_props['property']:
           #key = property['key']
           # Extracting values from the inner array
