@@ -703,7 +703,7 @@ class SolarOfThingsAPI:
           # Extracting values from the inner array
           #major_cities = ", ".join(region['cities'])
           #print(f"Major cities in {state_name}: {major_cities}")
-          _LOGGER.info(f"solar_of_things - parsed_props property = %s",parsed_props[property])
+          _LOGGER.info(f"solar_of_things - parsed_props property = %s",parsed_props['property'])
           
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
