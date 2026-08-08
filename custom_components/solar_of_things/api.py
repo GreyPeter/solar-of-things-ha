@@ -702,17 +702,18 @@ class SolarOfThingsAPI:
         
             timePoints = item.get('timePoints')
             property = item.get('property')
-            prop_name = property.get('key')
+            k = property.get('key')
             _LOGGER.info(f"Key = %sTime points = %s", prop_name, timePoints[7])
 
-            k = item.get("key") or item.get("name")
-            v = item.get("value")
+            #k = item.get("key") or item.get("name")
+            #v = item.get("value")
+            v = timePoints[7]
             if k and v is not None:
                 result[k] = v
 
         # Extract monthly totals (fallback: look for known keys)
         monthly: dict[str, Any] = {}
-        pv_total = result.get(month_key) or result.get("pvTotal") or result.get("pv") or 0
+        pv_total = result.get(month_key) or result.get("pvGeneratedEnergyTime") or result.get("pv") or 0
         monthly["monthly_pv_generated"] = float(pv_total or 0)
 
         grid_import = result.get("gridImport") or result.get("buy") or 0
