@@ -673,6 +673,7 @@ class SolarOfThingsAPI:
         now = self._now()
         year = now.year
         month_key = f"{year}-{str(now.month).zfill(2)}"
+        monthi = now.month - 1
         _LOGGER.info(f"solar_of_things - Fetching monthly PV summary for {month_key}.")
 
         self._ensure_token_valid()
@@ -703,7 +704,7 @@ class SolarOfThingsAPI:
             timePoints = item.get('timePoints')
             property = item.get('property')
             k = property.get('key')
-            v = timePoints[]['value']
+            v = timePoints[monthi]['value']
             _LOGGER.info(f"Key = %s -- Time points = %s", k, v)
 
             #k = item.get("key") or item.get("name")
