@@ -704,7 +704,7 @@ class SolarOfThingsAPI:
             property = item.get('property')
             k = property.get('key')
             v = timePoints[7]['value']
-            _LOGGER.info(f"Key = %s -- Time points = %s", k, timePoints[7]['value'])
+            _LOGGER.info(f"Key = %s -- Time points = %s", k, v)
 
             #k = item.get("key") or item.get("name")
             #v = item.get("value")
@@ -716,6 +716,7 @@ class SolarOfThingsAPI:
         monthly: dict[str, Any] = {}
         pv_total = result.get(month_key) or result.get("pvGeneratedEnergyTime") or result.get("pv") or 0
         monthly["monthly_pv_generated"] = float(pv_total or 0)
+        _LOGGER.info("monthly_pv_generated = {pv_total}")
 
         grid_import = result.get("gridImport") or result.get("buy") or 0
         monthly["monthly_grid_import"] = float(grid_import or 0)
