@@ -697,9 +697,9 @@ class SolarOfThingsAPI:
                  (data.get("data") or {}).get("list") or
                  [])
                  
-        timePoints = props.get("timePoints")
+        #timePoints = props.get("timePoints")
 
-        _LOGGER.info(f"solar_of_things - props {timePoints}")
+        _LOGGER.info(f"solar_of_things - props = %s",props)
           
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
