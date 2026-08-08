@@ -697,7 +697,7 @@ class SolarOfThingsAPI:
                  (data.get("data") or {}).get("list") or
                  [])
                  
-        for property in parsed_data['property']:
+        for property in props['property']:
           key = property['key']
           # Extracting values from the inner array
           #major_cities = ", ".join(region['cities'])
