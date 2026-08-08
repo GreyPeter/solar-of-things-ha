@@ -696,17 +696,19 @@ class SolarOfThingsAPI:
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
                  [])
+                 
+        timePoints = props.get("timePoints")
 
-        #print(f"solar_of_things - props {props}")
+        _LOGGER.info(f"solar_of_things - props {timePoints}")
           
         result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
             k = item.get("key") or item.get("name")
-            timePoints = item.get("timePoints")
+            #timePoints = item.get("timePoints")
             #august = timePoints.get("time")
-            property = item.get("property")
-            propertyKey = property.get("key")
-            _LOGGER.info(f"Key = %s  time point = %s", property, timePoints)
+            #property = item.get("property")
+            #propertyKey = property.get("key")
+            #_LOGGER.info(f"Key = %s  time point = %s", property, timePoints)
             #k = time_points.get("time")
 
             v = item.get("value")
