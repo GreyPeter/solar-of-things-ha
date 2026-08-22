@@ -53,7 +53,7 @@ TOKEN_REFRESH_LEAD_SECONDS = 300  # 5 minutes
 # ─── Sensor keys ───────────────────────────────────────────────────────────────
 SENSOR_KEYS = [
     "generationPower",
-    "pvInputVoltage1",
+    "pvInputVoltage",
     "pv1InputCurrentForBattery",
     "acOutputActivePower",
     "batteryDischargeCurrent",
