@@ -73,7 +73,7 @@ SENSOR_DEFINITIONS = {
         "device_class": "power",
         "icon": "mdi:solar-power",
     },
-    "pvInputVoltage1": {
+    "pvInputVoltage": {
         "name": "PV Input Voltage",
         "unit": "V",
         "device_class": "power",
