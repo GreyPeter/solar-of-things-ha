@@ -666,37 +666,6 @@ class SolarOfThingsAPI:
 
         return latest_values
 
-    # ─── Station summary (list) ─────────────────────────────────────────────
-    
-        def fetch_ststion_summary(self, station_id: str) -> dict[str, Any]:
-        """Fetch station Daily, Monthly, Yearly summary."""
-        
-        _LOGGER.info(f"EASun4200 - Fetching daily,monthly,yearly summary.")
-        self._ensure_token_valid()
-        resp = self.session.post(
-            f"{API_BASE_URL}{API_STATION_SUMMARY}"
-            f"?stationId={station_id}&summaryCategoryKey=pvInverterElectricityQuantityClass",
-            json={"time": str(year)},
-            timeout=30,
-        )
-        resp.raise_for_status()
-        data = resp.json()
-        if data.get("code") not in (0, None):
-            raise RuntimeError(
-                f"Sataion summary error code={data.get('code')} "
-                f"message={data.get('message')}"
-            )
-        stats = (((data.get("data") or {}).get("properties")) or
-                 (data.get("data") or {}).get("list") or
-                 [])
-                 
-        result: dict[str, Any] = {}
-        for item in stats if isinstance(props, list) else []:
-            _LOGGER.info(f"item", item)
-            
-    # Extract Station Stats (fallback: look for known keys)
-    stats: dict[str, Any] = {}
-    return stats
         
     # ─── Monthly summary (station) ─────────────────────────────────────────────
 
