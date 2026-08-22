@@ -666,7 +666,16 @@ class SolarOfThingsAPI:
 
         return latest_values
 
+    # ─── Station summary (list) ─────────────────────────────────────────────
+    
+    def fetch_ststion_summary(self, station_id: str) -> dict[str, Any]:
+        """Fetch station Daily, Monthly, Yearly summary."""
         
+        _LOGGER.info(f"EASun4200 - Fetching daily,monthly,yearly summary.")
+        # Extract Station Stats (fallback: look for known keys)
+        stats: dict[str, Any] = {}
+        return stats
+    
     # ─── Monthly summary (station) ─────────────────────────────────────────────
 
     def fetch_monthly_summary(self, station_id: str) -> dict[str, Any]:
