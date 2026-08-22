@@ -670,8 +670,15 @@ class SolarOfThingsAPI:
     
     def fetch_ststion_summary(self, station_id: str) -> dict[str, Any]:
         """Fetch station Daily, Monthly, Yearly summary."""
-        
         _LOGGER.info(f"EASun4200 - Fetching daily,monthly,yearly summary.")
+        self._ensure_token_valid()
+        resp = self.session.post(
+            f"{API_BASE_URL}{API_MONTHLY_SUMMARY}"
+            f"?stationId={station_id}&summaryCategoryKey=pvInverterElectricityQuantityClass",
+            json={"time": str(year)},
+            timeout=30,
+        )
+        resp.raise_for_status()
         # Extract Station Stats (fallback: look for known keys)
         stats: dict[str, Any] = {}
         return stats
