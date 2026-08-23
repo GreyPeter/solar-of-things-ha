@@ -760,7 +760,7 @@ class SolarOfThingsAPI:
             )
         else:
             monthly["monthly_solar_percentage"] = 0.0
-
+        _LOGGER.info(f"Monthly data  = {monthly}")
         return monthly
 
     # ─── Device settings ───────────────────────────────────────────────────────

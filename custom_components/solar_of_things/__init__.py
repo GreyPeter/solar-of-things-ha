@@ -224,10 +224,10 @@ class SolarOfThingsStationCoordinator(DataUpdateCoordinator):
             devices = await self.hass.async_add_executor_job(
                 self.api.list_devices, self.station_id
             )
-            monthly = await self.hass.async_add_executor_job(
+            summary = await self.hass.async_add_executor_job(
                 self.api.fetch_monthly_summary, self.station_id
             )
-            summary = await self.hass.async_add_executor_job(
+            monthly = await self.hass.async_add_executor_job(
                 self.api.fetch_station_summary, self.station_id
             )
             return {"devices": devices, "monthly": monthly, "summary": summary}
