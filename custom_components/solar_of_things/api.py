@@ -672,16 +672,20 @@ class SolarOfThingsAPI:
     def fetch_station_summary(self, station_id: str) -> dict[str, Any]:
         """Fetch station Daily, Monthly, Yearly summary."""
         _LOGGER.info(f"SolarOfThings - Fetching daily,monthly,yearly summary.")
-        _LOGGER.info(f"SolarOfThings - Post = {API_BASE_URL}{API_STATION_SUMMARY} ?stationId={station_id}")
         self._ensure_token_valid()
-        resp1 = self.session.post(
+        resp = self.session.post(
             f"{API_BASE_URL}{API_STATION_SUMMARY}"
             f"?stationId={station_id}",
             json={},
             timeout=30,
         )
-        resp1.raise_for_status()
-        data1 = resp1.json()
+        resp.raise_for_status()
+        data = resp.json()
+        if data.get("code") not in (0, None):
+            raise RuntimeError(
+                f"Station summary error code={data.get('code')} "
+                f"message={data.get('message')}"
+            )
 
         # Extract Station Stats (fallback: look for known keys)
         stats: dict[str, Any] = {}
