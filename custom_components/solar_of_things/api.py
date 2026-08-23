@@ -682,11 +682,6 @@ class SolarOfThingsAPI:
         resp1.raise_for_status()
         data1 = resp1.json()
 
-        if data1.get("code") not in (0, None):
-            raise RuntimeError(
-                f"Station summary error code={data.get('code')} "
-                f"message={data.get('message')}"
-            )
         # Extract Station Stats (fallback: look for known keys)
         stats: dict[str, Any] = {}
         return stats
