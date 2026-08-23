@@ -678,9 +678,9 @@ class SolarOfThingsAPI:
         _LOGGER.info(f"SolarOfThings - Fetching owner's monthly summary.")
         self._ensure_token_valid()
         resp = self.session.post(
-            f"{API_BASE_URL}{API_STATION_SUMMARY}"
-            f"?summaryCategoryKey=pvInverterElectricityQuantityClass",
-            json={"time": str(year)},
+            f"{API_BASE_URL}{API_STATION_SUMMARY}",
+            #f"?summaryCategoryKey=pvInverterElectricityQuantityClass",
+            json={},
             timeout=30,
         )
         resp.raise_for_status()
