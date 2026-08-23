@@ -164,4 +164,29 @@ SENSOR_DEFINITIONS = {
         "unit": "%",
         "icon": "mdi:percent",
     },
+    # Owners summary sensors
+    "dailyProducedQuantity": {
+        "name": "Daily Energy Produced",
+        "unit": "kWh",
+        "device_class": "energy",
+        "icon": "mdi:solar-power",
+    },
+    "monthlyProducedQuantity": {
+        "name": "Monthly Energy Produced",
+        "unit": "kWh",
+        "device_class": "energy",
+        "icon": "mdi:transmission-tower-import",
+    },
+    "yearlyProducedQuantity": {
+        "name": "Yearly Energy Produced",
+        "unit": "kWh",
+        "device_class": "energy",
+        "icon": "mdi:home-lightning-bolt",
+    },
+        "totalProducedQuantity": {
+        "name": "Total Energy Produced",
+        "unit": "kWh",
+        "device_class": "energy",
+        "icon": "mdi:home-lightning-bolt",
+    },
 }
