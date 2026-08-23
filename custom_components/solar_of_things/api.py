@@ -690,6 +690,8 @@ class SolarOfThingsAPI:
                 f"Station summary error code={data.get('code')} "
                 f"message={data.get('message')}"
             )
+        dat = data.get("data")
+        _LOGGER.info(f"Received data  = {dat}")
         props = (((data.get("data") or {}).get("properties")) or
                  (data.get("data") or {}).get("list") or
                  [])
