@@ -673,7 +673,7 @@ class SolarOfThingsAPI:
         _LOGGER.info(f"EASun4200 - Fetching daily,monthly,yearly summary.")
         self._ensure_token_valid()
         resp = self.session.post(
-            f"{API_BASE_URL}{API_MONTHLY_SUMMARY}"
+            f"{API_BASE_URL}{API_MONTHLY_SUMMARY}",
             timeout=30,
         )
         resp.raise_for_status()
