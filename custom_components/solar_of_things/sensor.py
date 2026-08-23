@@ -38,6 +38,10 @@ _TRANSLATION_KEYS: dict[str, str] = {
     "monthly_grid_import": "monthly_grid_import",
     "monthly_total_consumption": "monthly_total_consumption",
     "monthly_solar_percentage": "monthly_solar_percentage",
+    "dailyProducedQuantity": "dailyProducedQuantity",
+    "montlyProducedQuantity": "monthlyProducedQuantity",
+    "yearlyProducedQuantity": "yearlyProducedQuantity",
+    "totalProducedQuantity": "totalProducedQuantity",
 }
 
 
