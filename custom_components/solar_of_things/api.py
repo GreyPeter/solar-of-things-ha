@@ -673,7 +673,9 @@ class SolarOfThingsAPI:
         """Fetch station Daily, Monthly, Yearly summary."""
         now = self._now()
         year = now.year
-        _LOGGER.info(f"SolarOfThings - Fetching daily,monthly,yearly summary.")
+        month_key = f"{year}-{str(now.month).zfill(2)}"
+        month = now.month - 1
+        _LOGGER.info(f"SolarOfThings - Fetching owner's monthly summary.")
         self._ensure_token_valid()
         resp = self.session.post(
             f"{API_BASE_URL}{API_STATION_SUMMARY}"
@@ -698,7 +700,7 @@ class SolarOfThingsAPI:
             timePoints = item.get('timePoints')
             property = item.get('property')
             k = property.get('key')
-            v = timePoints[monthi]['value']
+            v = timePoints[month]['value']
             _LOGGER.info(f"Key= %s -- Value= %s", k, v)
             
             if k and v is not None:
@@ -749,7 +751,7 @@ class SolarOfThingsAPI:
             timePoints = item.get('timePoints')
             property = item.get('property')
             k = property.get('key')
-            v = timePoints[monthi]['value']
+            v = timePoints[month]['value']
             #_LOGGER.info(f"Key= %s -- Value= %s", k, v)
 
             #k = item.get("key") or item.get("name")
