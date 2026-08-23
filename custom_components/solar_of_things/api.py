@@ -670,13 +670,20 @@ class SolarOfThingsAPI:
     
     def fetch_station_summary(self, station_id: str) -> dict[str, Any]:
         """Fetch station Daily, Monthly, Yearly summary."""
-        _LOGGER.info(f"EASun4200 - Fetching daily,monthly,yearly summary.")
+        _LOGGER.info(f"SolarOfThings - Fetching daily,monthly,yearly summary.")
         self._ensure_token_valid()
         resp = self.session.post(
             f"{API_BASE_URL}{API_STATION_SUMMARY}",
             timeout=30,
         )
         resp.raise_for_status()
+        data = resp.json()
+
+        if data.get("code") not in (0, None):
+            raise RuntimeError(
+                f"Station summary error code={data.get('code')} "
+                f"message={data.get('message')}"
+            )
         # Extract Station Stats (fallback: look for known keys)
         stats: dict[str, Any] = {}
         return stats
@@ -689,7 +696,7 @@ class SolarOfThingsAPI:
         year = now.year
         month_key = f"{year}-{str(now.month).zfill(2)}"
         monthi = now.month - 1
-        _LOGGER.info(f"solar_of_things - Fetching monthly PV summary for {month_key}.")
+        #_LOGGER.info(f"solar_of_things - Fetching monthly PV summary for {month_key}.")
 
         self._ensure_token_valid()
         resp = self.session.post(
@@ -720,7 +727,7 @@ class SolarOfThingsAPI:
             property = item.get('property')
             k = property.get('key')
             v = timePoints[monthi]['value']
-            _LOGGER.info(f"Key= %s -- Value= %s", k, v)
+            #_LOGGER.info(f"Key= %s -- Value= %s", k, v)
 
             #k = item.get("key") or item.get("name")
             #v = item.get("value")
