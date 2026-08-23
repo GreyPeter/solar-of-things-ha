@@ -695,7 +695,7 @@ class SolarOfThingsAPI:
                  [])
                  
         # Extract Station Stats (fallback: look for known keys)
-        stats: dict[str, Any] = {}
+        result: dict[str, Any] = {}
         for item in props if isinstance(props, list) else []:
             timePoints = item.get('timePoints')
             property = item.get('property')
