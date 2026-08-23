@@ -672,6 +672,7 @@ class SolarOfThingsAPI:
     def fetch_station_summary(self, station_id: str) -> dict[str, Any]:
         """Fetch station Daily, Monthly, Yearly summary."""
         _LOGGER.info(f"SolarOfThings - Fetching daily,monthly,yearly summary.")
+        _LOGGER.info(f"SolarOfThings - Post = {API_BASE_URL}{API_STATION_SUMMARY} ?stationId={station_id}")
         self._ensure_token_valid()
         resp1 = self.session.post(
             f"{API_BASE_URL}{API_STATION_SUMMARY}"
