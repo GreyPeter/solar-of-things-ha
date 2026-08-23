@@ -704,7 +704,7 @@ class SolarOfThingsAPI:
             _LOGGER.info(f"Key= %s -- Value= %s", k, v)
             
             if k and v is not None:
-                stats[k] = v
+                result[k] = v
         # Extract monthly totals (fallback: look for known keys)
         monthly: dict[str, Any] = {}
         #pv_total = result.get(month_key) or result.get("pvGeneratedEnergy") or result.get("pv") or 0
