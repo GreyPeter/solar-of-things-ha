@@ -690,30 +690,9 @@ class SolarOfThingsAPI:
                 f"Station summary error code={data.get('code')} "
                 f"message={data.get('message')}"
             )
-        dat = data.get("data")
-        _LOGGER.info(f"Received data  = {dat}")
-        props = (((data.get("data") or {}).get("properties")) or
-                 (data.get("data") or {}).get("list") or
-                 [])
-                 
-        # Extract Station Stats (fallback: look for known keys)
-        result: dict[str, Any] = {}
-        for item in props if isinstance(props, list) else []:
-            timePoints = item.get('timePoints')
-            property = item.get('property')
-            k = property.get('key')
-            v = timePoints[month]['value']
-            _LOGGER.info(f"Key= %s -- Value= %s", k, v)
-            
-            if k and v is not None:
-                result[k] = v
-        # Extract monthly totals (fallback: look for known keys)
-        monthly: dict[str, Any] = {}
-        #pv_total = result.get(month_key) or result.get("pvGeneratedEnergy") or result.get("pv") or 0
-        pv_total = result.get("pvGeneratedEnergy") or result.get("pv") or 0
-        monthly["monthly_pv_generated"] = float(pv_total or 0)
-        #_LOGGER.info(f"monthly_pv_generated = {pv_total}")
-        return monthly
+        props = data.get("data")
+        _LOGGER.info(f"Received data  = {props}")
+        return props
     
     # ─── Monthly summary (station) ─────────────────────────────────────────────
 
