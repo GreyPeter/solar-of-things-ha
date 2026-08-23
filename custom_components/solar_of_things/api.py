@@ -671,6 +671,7 @@ class SolarOfThingsAPI:
     
     def fetch_station_summary(self, station_id: str) -> dict[str, Any]:
         """Fetch station Daily, Monthly, Yearly summary."""
+        now = self._now()
         year = now.year
         _LOGGER.info(f"SolarOfThings - Fetching daily,monthly,yearly summary.")
         self._ensure_token_valid()
