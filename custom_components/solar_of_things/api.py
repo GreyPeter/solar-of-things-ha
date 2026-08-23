@@ -688,7 +688,10 @@ class SolarOfThingsAPI:
                 f"Station summary error code={data.get('code')} "
                 f"message={data.get('message')}"
             )
-
+        props = (((data.get("data") or {}).get("properties")) or
+                 (data.get("data") or {}).get("list") or
+                 [])
+                 
         # Extract Station Stats (fallback: look for known keys)
         stats: dict[str, Any] = {}
         return stats
