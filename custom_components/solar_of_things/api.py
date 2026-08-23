@@ -694,7 +694,22 @@ class SolarOfThingsAPI:
                  
         # Extract Station Stats (fallback: look for known keys)
         stats: dict[str, Any] = {}
-        return stats
+        for item in props if isinstance(props, list) else []:
+            timePoints = item.get('timePoints')
+            property = item.get('property')
+            k = property.get('key')
+            v = timePoints[monthi]['value']
+            _LOGGER.info(f"Key= %s -- Value= %s", k, v)
+            
+            if k and v is not None:
+                stats[k] = v
+        # Extract monthly totals (fallback: look for known keys)
+        monthly: dict[str, Any] = {}
+        #pv_total = result.get(month_key) or result.get("pvGeneratedEnergy") or result.get("pv") or 0
+        pv_total = result.get("pvGeneratedEnergy") or result.get("pv") or 0
+        monthly["monthly_pv_generated"] = float(pv_total or 0)
+        #_LOGGER.info(f"monthly_pv_generated = {pv_total}")
+        return monthly
     
     # ─── Monthly summary (station) ─────────────────────────────────────────────
 
