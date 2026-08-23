@@ -668,7 +668,7 @@ class SolarOfThingsAPI:
 
     # ─── Station summary (list) ─────────────────────────────────────────────
     
-    def fetch_ststion_summary(self, station_id: str) -> dict[str, Any]:
+    def fetch_station_summary(self, station_id: str) -> dict[str, Any]:
         """Fetch station Daily, Monthly, Yearly summary."""
         _LOGGER.info(f"EASun4200 - Fetching daily,monthly,yearly summary.")
         self._ensure_token_valid()
