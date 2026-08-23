@@ -718,7 +718,7 @@ class SolarOfThingsAPI:
         now = self._now()
         year = now.year
         month_key = f"{year}-{str(now.month).zfill(2)}"
-        monthi = now.month - 1
+        month = now.month - 1
         #_LOGGER.info(f"solar_of_things - Fetching monthly PV summary for {month_key}.")
 
         self._ensure_token_valid()
