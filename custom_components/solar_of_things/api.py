@@ -677,7 +677,7 @@ class SolarOfThingsAPI:
         self._ensure_token_valid()
         resp = self.session.post(
             f"{API_BASE_URL}{API_STATION_SUMMARY}"
-            f"summaryCategoryKey=pvInverterElectricityQuantityClass",
+            f"?summaryCategoryKey=pvInverterElectricityQuantityClass",
             json={"time": str(year)},
             timeout=30,
         )
