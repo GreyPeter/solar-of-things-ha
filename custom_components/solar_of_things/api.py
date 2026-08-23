@@ -671,12 +671,13 @@ class SolarOfThingsAPI:
     
     def fetch_station_summary(self, station_id: str) -> dict[str, Any]:
         """Fetch station Daily, Monthly, Yearly summary."""
+        year = now.year
         _LOGGER.info(f"SolarOfThings - Fetching daily,monthly,yearly summary.")
         self._ensure_token_valid()
         resp = self.session.post(
             f"{API_BASE_URL}{API_STATION_SUMMARY}"
-            f"?stationId={station_id}",
-            json={},
+            f"summaryCategoryKey=pvInverterElectricityQuantityClass",
+            json={"time": str(year)},
             timeout=30,
         )
         resp.raise_for_status()
