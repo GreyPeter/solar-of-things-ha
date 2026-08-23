@@ -675,7 +675,7 @@ class SolarOfThingsAPI:
         self._ensure_token_valid()
         resp = self.session.post(
             f"{API_BASE_URL}{API_STATION_SUMMARY}"
-            f"{--data-raw '{"page":1,"state":"","count":10,"stationType":"","connectedGridType":"","orderByNameAsc":null,"orderByStationTypeAsc":null,"orderByInstalledCapacityAsc":null,"orderByConnectedGridTypeAsc":null,"orderByStateAsc":null,"orderByInstalledAtAsc":null,"orderByCreatedAtAsc":null,"name":""}'}",
+            f"?stationId={station_id}",
             timeout=30,
         )
         resp.raise_for_status()
