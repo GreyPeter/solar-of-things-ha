@@ -677,6 +677,7 @@ class SolarOfThingsAPI:
         resp1 = self.session.post(
             f"{API_BASE_URL}{API_STATION_SUMMARY}"
             f"?stationId={station_id}",
+            json={},
             timeout=30,
         )
         resp1.raise_for_status()
