@@ -675,7 +675,7 @@ class SolarOfThingsAPI:
         year = now.year
         month_key = f"{year}-{str(now.month).zfill(2)}"
         month = now.month - 1
-        _LOGGER.info(f"SolarOfThings - Fetching owner's monthly summary.")
+        #_LOGGER.info(f"SolarOfThings - Fetching owner's monthly summary.")
         self._ensure_token_valid()
         resp = self.session.post(
             f"{API_BASE_URL}{API_STATION_SUMMARY}",
@@ -691,7 +691,7 @@ class SolarOfThingsAPI:
                 f"message={data.get('message')}"
             )
         props = data.get("data")
-        _LOGGER.info(f"Received data  = {props}")
+        #_LOGGER.info(f"Received data  = {props}")
         return props
     
     # ─── Monthly summary (station) ─────────────────────────────────────────────
@@ -760,7 +760,7 @@ class SolarOfThingsAPI:
             )
         else:
             monthly["monthly_solar_percentage"] = 0.0
-        _LOGGER.info(f"Monthly data  = {monthly}")
+        #_LOGGER.info(f"Monthly data  = {monthly}")
         return monthly
 
     # ─── Device settings ───────────────────────────────────────────────────────
