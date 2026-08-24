@@ -159,8 +159,8 @@ class SolarOfThingsDeviceSensor(CoordinatorEntity, SensorEntity):
 
     @property
     def native_value(self):
-        ts = (self.coordinator.data or {}).get("time_series") or {}
-        #ts = (self.coordinator.data or {}).get("statistics") or {}
+        #ts = (self.coordinator.data or {}).get("time_series") or {}
+        ts = (self.coordinator.data or {}).get("statistics") or {}
         val = ts.get(self._sensor_key)
         if val is None:
             return None
