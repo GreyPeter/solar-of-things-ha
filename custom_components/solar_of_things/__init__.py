@@ -227,10 +227,7 @@ class SolarOfThingsStationCoordinator(DataUpdateCoordinator):
             monthly = await self.hass.async_add_executor_job(
                 self.api.fetch_monthly_summary, self.station_id
             )
-            statistics = await self.hass.async_add_executor_job(
-                self.api.fetch_station_summary, self.station_id
-            )
-            return {"devices": devices, "monthly": monthly, "statistics": statistics}
+            return {"devices": devices, "monthly": monthly}
         except TokenExpiredError as err:
             _LOGGER.error(
                 "SolarOfThings station %s: token expired — triggering re-auth: %s",
@@ -274,12 +271,16 @@ class SolarOfThingsDeviceCoordinator(DataUpdateCoordinator):
             settings = await self.hass.async_add_executor_job(
                 self.api.fetch_settings, self.device_id
             )
+            statistics = await self.hass.async_add_executor_job(
+                self.api.fetch_station_summary, self.station_id
+            )
             return {
                 "time_series": time_series,
                 "settings": settings,
                 "device": self.device_id,
                 "station_id": self.station_id,
                 "device_meta": self.device_meta,
+                "statistics": statistics,
             }
         except TokenExpiredError as err:
             _LOGGER.error(
