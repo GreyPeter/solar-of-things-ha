@@ -230,7 +230,6 @@ class SolarOfThingsStationCoordinator(DataUpdateCoordinator):
             statistics = await self.hass.async_add_executor_job(
                 self.api.fetch_station_summary, self.station_id
             )
-                                                           )
             return {"devices": devices, "monthly": monthly, "statistics": statistics}
         except TokenExpiredError as err:
             _LOGGER.error(
