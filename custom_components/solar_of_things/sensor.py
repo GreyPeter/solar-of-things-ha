@@ -82,7 +82,8 @@ async def async_setup_entry(
     if station_coordinator:
         for key, definition in SENSOR_DEFINITIONS.items():
             _LOGGER.info(f"station_coordinator Key= %s", key)
-            if not key.startswith("monthly_"):
+            #if not key.startswith("monthly_"):
+            if not key.endswith("ProducedQuantity"):
                 continue
 
             entities.append(
