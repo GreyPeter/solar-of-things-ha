@@ -82,14 +82,28 @@ async def async_setup_entry(
     if station_coordinator:
         for key, definition in SENSOR_DEFINITIONS.items():
             _LOGGER.info(f"station_coordinator Key= %s", key)
-            #if not key.startswith("monthly_"):
-            if not key.endswith("ProducedQuantity"):
+            if not key.startswith("monthly_"):
                 continue
 
             entities.append(
                 SolarOfThingsStationMonthlySensor(
                     coordinator=station_coordinator,
                     station_id=station_id,
+                    sensor_key=key,
+                    sensor_definition=definition,
+                )
+            )
+
+    async_add_entities(entities)
+    
+    if not key.endswith("ProducedQuantity"):
+        continue
+            entities.append(
+                SolarOfThingsDeviceSensor(
+                    coordinator=coordinator,
+                    station_id=station_id,
+                    device_id=device_id,
+                    device_name=device_name,
                     sensor_key=key,
                     sensor_definition=definition,
                 )
