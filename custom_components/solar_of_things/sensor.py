@@ -258,7 +258,7 @@ class SolarOfThingsOwnerSensor(CoordinatorEntity, SensorEntity):
         self._device_name = device_name
         self._sensor_key = sensor_key
         self._sensor_definition = sensor_definition
-        _LOGGER.info("SolarOfThingsOwnerSensor - sensor defination %s",sensor_definition)
+        #_LOGGER.info("SolarOfThingsOwnerSensor - sensor defination %s",sensor_definition)
 
         self._attr_has_entity_name = True
         self._attr_translation_key = _TRANSLATION_KEYS.get(sensor_key)
@@ -288,6 +288,7 @@ class SolarOfThingsOwnerSensor(CoordinatorEntity, SensorEntity):
     def native_value(self):
         ts = (self.coordinator.data or {}).get("owner_data") or {}
         val = ts.get(self._sensor_key)
+        _LOGGER.info("SolarOfThingsOwnerSensor - sensor key %s, value %s", self._sensor_key, val)
         if val is None:
             return None
         try:
