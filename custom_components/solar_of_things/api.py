@@ -694,7 +694,7 @@ class SolarOfThingsAPI:
         #_LOGGER.info(f"Received data  = {props}")
         #Received data  = {'totalPower': 0.562, 'dailyProducedQuantity': 4.87, 'monthlyProducedQuantity': 98.66, 'yearlyProducedQuantity': 361.25, 'totalProducedQuantity': 361.25, 'allInstalledCapacity': 4.0, 'deviceTotal': 1, 'savingStandardCarbon': 145.95, 'co2EmissionReduction': 360.17, 'so2EmissionReduction': 10.84, 'noxEmissionReduction': 5.42}
         dailyProducedQuantity = props.get("dailyProducedQuantity")
-        _LOGGER.info(f"dailyProducedQuantity = {dailyProducedQuantity}")
+        #_LOGGER.info(f"dailyProducedQuantity = {dailyProducedQuantity}")
 
         return props
     

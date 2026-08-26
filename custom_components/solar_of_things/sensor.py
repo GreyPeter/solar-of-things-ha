@@ -99,7 +99,7 @@ async def async_setup_entry(
             if not key.endswith("ProducedQuantity"):
                 continue
 
-            _LOGGER.info(f"Key data  = {key}")
+            #_LOGGER.info(f"Key data  = {key}")
             entities.append(
                 SolarOfThingsOwnerSensor(
                     coordinator=coordinator,
