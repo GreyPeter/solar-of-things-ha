@@ -135,7 +135,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     )
     await station_coordinator.async_config_entry_first_refresh()
 
-    # ── Owner coordinator (device list + monthly) ────────────────────────────
+    # ── Owner coordinator (owner) ────────────────────────────
     owner_coordinator = SolarOfThingsOwnerCoordinator(
         hass=hass,
         api=api,
@@ -305,7 +305,7 @@ class SolarOfThingsDeviceCoordinator(DataUpdateCoordinator):
             ) from err
             
 class SolarOfThingsOwnerCoordinator(DataUpdateCoordinator):
-    """Fetch owner-level data (device list + monthly stats)."""
+    """Fetch owner-level data (owner stats)."""
 
     def __init__(
         self,
@@ -326,10 +326,10 @@ class SolarOfThingsOwnerCoordinator(DataUpdateCoordinator):
 
     async def _async_update_data(self) -> dict[str, Any]:
         try:
-            station = await self.hass.async_add_executor_job(
+            owner = await self.hass.async_add_executor_job(
                 self.api.fetch_station_summary, self.station_id
             )
-            return {"station": station}
+            return {"owner": owner}
         except TokenExpiredError as err:
             _LOGGER.error(
                 "SolarOfThings station %s: token expired — triggering re-auth: %s",
