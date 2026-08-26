@@ -176,6 +176,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         "api": api,
         "station_id": station_id,
         "station_coordinator": station_coordinator,
+        "owner_coordinator": owner_coordinator,
         "device_coordinators": device_coordinators,
         "devices": devices,
     }
