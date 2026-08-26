@@ -142,7 +142,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         station_id=station_id,
         entry=entry,
     )
-    await station_coordinator.async_config_entry_first_refresh()
+    await owner_coordinator.async_config_entry_first_refresh()
 
     # ── Per-device coordinators ────────────────────────────────────────────────
     devices: list[dict[str, Any]] = (
