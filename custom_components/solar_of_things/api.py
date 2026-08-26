@@ -604,6 +604,7 @@ class SolarOfThingsAPI:
             "batteryVoltage",
             "feedInPower",
             "batteryCapacity",
+            "outputVoltage",
         ]
 
         data = self._post(
