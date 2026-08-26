@@ -126,6 +126,9 @@
       "load_power": {
         "name": "Load Power"
       },
+      "load_voltage": {
+        "name": "Load Voltage"
+      },
       "monthly_pv_generated": {
         "name": "Monthly PV Generated"
       },

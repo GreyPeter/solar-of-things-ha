@@ -67,6 +67,7 @@ SENSOR_KEYS = [
     "batteryCapacity",
     "gridPower",
     "loadPower",
+    "outputVoltage",
 ]
 
 SENSOR_DEFINITIONS = {
@@ -136,10 +137,16 @@ SENSOR_DEFINITIONS = {
         "device_class": "power",
         "icon": "mdi:transmission-tower-import",
     },
-    "loadPower": {
+        "loadPower": {
         "name": "Load Power",
         "unit": "W",
         "device_class": "power",
+        "icon": "mdi:home-lightning-bolt",
+    },
+        "outputVoltage": {
+        "name": "Load Voltage",
+        "unit": "V",
+        "device_class": "voltage",
         "icon": "mdi:home-lightning-bolt",
     },
     # Monthly summary sensors
