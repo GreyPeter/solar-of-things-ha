@@ -597,7 +597,6 @@ class SolarOfThingsAPI:
         keys = [
             "generationPower",
             "pvInputVoltage",
-            "pv1InputCurrentForBattery",
             "acOutputActivePower",
             "batteryDischargeCurrent",
             "batteryChargingCurrent",

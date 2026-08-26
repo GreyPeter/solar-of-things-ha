@@ -24,7 +24,6 @@ _LOGGER = logging.getLogger(__name__)
 _TRANSLATION_KEYS: dict[str, str] = {
     "generationPower": "pv_input_power",
     "pvInputVoltage": "pv_charging_voltage",
-    "pv1InputCurrentForBattery": "pv_input_current",
     "acOutputActivePower": "ac_output_active_power",
     "batteryDischargeCurrent": "battery_discharge_current",
     "batteryChargingCurrent": "battery_charging_current",
