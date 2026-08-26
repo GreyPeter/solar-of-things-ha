@@ -64,7 +64,8 @@ async def async_setup_entry(
         device_name = (coordinator.device_meta or {}).get("name") or device_id
 
         for key, definition in SENSOR_DEFINITIONS.items():
-            if key.startswith("monthly_"):
+            #if key.startswith("monthly_"):
+            if  key.endswith("ProducedQuantity"):
                 continue
             #_LOGGER.info(f"Device Key= %s and Definition= %s", key, definition)
             entities.append(
