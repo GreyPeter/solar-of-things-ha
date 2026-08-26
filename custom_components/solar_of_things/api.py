@@ -691,7 +691,7 @@ class SolarOfThingsAPI:
                 f"message={data.get('message')}"
             )
         props = data.get("data")
-        #_LOGGER.info(f"Received data  = {props}")
+        _LOGGER.info(f"Received data  = {props}")
         return props
     
     # ─── Monthly summary (station) ─────────────────────────────────────────────
