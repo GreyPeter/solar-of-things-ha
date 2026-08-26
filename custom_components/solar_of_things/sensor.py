@@ -109,7 +109,7 @@ async def async_setup_entry(
                     sensor_key=key,
                     sensor_definition=definition,
                 )
-#            )
+            )
 
     async_add_entities(entities)
 
