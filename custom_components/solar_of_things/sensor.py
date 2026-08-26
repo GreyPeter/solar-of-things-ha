@@ -66,7 +66,7 @@ async def async_setup_entry(
         for key, definition in SENSOR_DEFINITIONS.items():
             if key.startswith("monthly_"):
                 continue
-            _LOGGER.info(f"Device Key= %s and Definition= %s", key, definition)
+            #_LOGGER.info(f"Device Key= %s and Definition= %s", key, definition)
             entities.append(
                 SolarOfThingsDeviceSensor(
                     coordinator=coordinator,
@@ -258,7 +258,7 @@ class SolarOfThingsOwnerSensor(CoordinatorEntity, SensorEntity):
         self._device_name = device_name
         self._sensor_key = sensor_key
         self._sensor_definition = sensor_definition
-        _LOGGER.info("SolarOfThingsOwnerSensor - sensor defination {sensor_definition}")
+        _LOGGER.info("SolarOfThingsOwnerSensor - sensor defination %s",sensor_definition)
 
         self._attr_has_entity_name = True
         self._attr_translation_key = _TRANSLATION_KEYS.get(sensor_key)
