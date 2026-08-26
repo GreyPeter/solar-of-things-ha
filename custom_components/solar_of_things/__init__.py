@@ -293,3 +293,43 @@ class SolarOfThingsDeviceCoordinator(DataUpdateCoordinator):
             raise UpdateFailed(
                 f"Device update failed for {self.device_id}: {err}"
             ) from err
+            
+class SolarOfThingsOwnerCoordinator(DataUpdateCoordinator):
+    """Fetch owner-level data (device list + monthly stats)."""
+
+    def __init__(
+        self,
+        hass: HomeAssistant,
+        api: SolarOfThingsAPI,
+        station_id: str,
+        entry: ConfigEntry,
+    ) -> None:
+        self.api = api
+        self.station_id = station_id
+        self._entry = entry
+        super().__init__(
+            hass,
+            _LOGGER,
+            name=f"{DOMAIN}_station_{station_id}",
+            update_interval=STATION_UPDATE_INTERVAL,
+        )
+
+    async def _async_update_data(self) -> dict[str, Any]:
+        try:
+            devices = await self.hass.async_add_executor_job(
+                self.api.list_devices, self.station_id
+            )
+            monthly = await self.hass.async_add_executor_job(
+                self.api.fetch_monthly_summary, self.station_id
+            )
+            return {"devices": devices, "monthly": monthly}
+        except TokenExpiredError as err:
+            _LOGGER.error(
+                "SolarOfThings station %s: token expired — triggering re-auth: %s",
+                self.station_id, err,
+            )
+            self._entry.async_start_reauth(self.hass)
+            raise UpdateFailed(f"Token expired: {err}") from err
+        except Exception as err:
+            raise UpdateFailed(f"Station update failed: {err}") from err
+
