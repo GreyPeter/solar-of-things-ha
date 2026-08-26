@@ -326,10 +326,10 @@ class SolarOfThingsOwnerCoordinator(DataUpdateCoordinator):
 
     async def _async_update_data(self) -> dict[str, Any]:
         try:
-            owner = await self.hass.async_add_executor_job(
+            owner_data = await self.hass.async_add_executor_job(
                 self.api.fetch_station_summary, self.station_id
             )
-            return {"owner": owner}
+            return {"owner_data": owner_data}
         except TokenExpiredError as err:
             _LOGGER.error(
                 "SolarOfThings station %s: token expired — triggering re-auth: %s",

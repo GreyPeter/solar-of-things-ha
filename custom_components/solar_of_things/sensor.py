@@ -93,22 +93,22 @@ async def async_setup_entry(
                 )
             )
 
-    # Station-level monthly sensors
-#    if station_coordinator:
-#        for key, definition in SENSOR_DEFINITIONS.items():
-#            if not key.endswith("ProducedQuantity"):
-#                continue
-#
-#            _LOGGER.info(f"Key data  = {key}")
-#            entities.append(
-#                SolarOfThingsDeviceSensor(
-#                    coordinator=coordinator,
-#                    station_id=station_id,
-#                    device_id=device_id,
-#                    device_name=device_name,
-#                    sensor_key=key,
-#                    sensor_definition=definition,
-#                )
+    # Station-level owners data
+    if station_coordinator:
+        for key, definition in SENSOR_DEFINITIONS.items():
+            if not key.endswith("ProducedQuantity"):
+                continue
+
+            _LOGGER.info(f"Key data  = {key}")
+            entities.append(
+                SolarOfThingsOwnerSensor(
+                    coordinator=coordinator,
+                    station_id=station_id,
+                    device_id=device_id,
+                    device_name=device_name,
+                    sensor_key=key,
+                    sensor_definition=definition,
+                )
 #            )
 
     async_add_entities(entities)
@@ -238,3 +238,59 @@ class SolarOfThingsStationMonthlySensor(CoordinatorEntity, SensorEntity):
             return round(float(val), 2)
         except Exception:
             return None
+
+class SolarOfThingsOwnerSensor(CoordinatorEntity, SensorEntity):
+    """Per-device telemetry sensor."""
+
+    def __init__(
+        self,
+        coordinator,
+        station_id: str,
+        device_id: str,
+        device_name: str,
+        sensor_key: str,
+        sensor_definition: dict,
+    ) -> None:
+        super().__init__(coordinator)
+
+        self._station_id = station_id
+        self._device_id = device_id
+        self._device_name = device_name
+        self._sensor_key = sensor_key
+        self._sensor_definition = sensor_definition
+
+        self._attr_has_entity_name = True
+        self._attr_translation_key = _TRANSLATION_KEYS.get(sensor_key)
+        # Fallback name if no translation key
+        if not self._attr_translation_key:
+            self._attr_name = f"{device_name} {sensor_definition['name']}"
+        self._attr_unique_id = f"{DOMAIN}_{station_id}_{device_id}_{sensor_key}"
+        self._attr_icon = sensor_definition.get("icon")
+
+        unit = sensor_definition.get("unit")
+        if unit == "kWh":
+            self._attr_device_class = SensorDeviceClass.ENERGY
+            self._attr_native_unit_of_measurement = UnitOfEnergy.KILO_WATT_HOUR
+            self._attr_state_class = SensorStateClass.TOTAL_INCREASING
+
+    @property
+    def device_info(self):
+        return {
+            "identifiers": {(DOMAIN, self._device_id)},
+            "name": self._device_name,
+            "manufacturer": "Siseli",
+            "model": (self.coordinator.data.get("device_meta") or {}).get("model") if self.coordinator.data else None,
+            "via_device": (DOMAIN, self._station_id),
+        }
+
+    @property
+    def native_value(self):
+        ts = (self.coordinator.data or {}).get("owner_data") or {}
+        val = ts.get(self._sensor_key)
+        if val is None:
+            return None
+        try:
+            return round(float(val), 2)
+        except Exception:
+            return None
+
