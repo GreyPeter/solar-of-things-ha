@@ -135,6 +135,15 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     )
     await station_coordinator.async_config_entry_first_refresh()
 
+    # ── Owner coordinator (device list + monthly) ────────────────────────────
+    owner_coordinator = SolarOfThingsOwnerCoordinator(
+        hass=hass,
+        api=api,
+        station_id=station_id,
+        entry=entry,
+    )
+    await station_coordinator.async_config_entry_first_refresh()
+
     # ── Per-device coordinators ────────────────────────────────────────────────
     devices: list[dict[str, Any]] = (
         station_coordinator.data.get("devices", []) if station_coordinator.data else []
