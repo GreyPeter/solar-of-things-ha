@@ -178,7 +178,6 @@ class SolarOfThingsDeviceSensor(CoordinatorEntity, SensorEntity):
     @property
     def native_value(self):
         ts = (self.coordinator.data or {}).get("time_series") or {}
-        #ts = (self.coordinator.data or {}).get("owner") or {}
         val = ts.get(self._sensor_key)
         if val is None:
             return None
@@ -289,7 +288,8 @@ class SolarOfThingsOwnerSensor(CoordinatorEntity, SensorEntity):
     def native_value(self):
         ts = (self.coordinator.data or {}).get("owner_data") or {}
         val = ts.get(self._sensor_key)
-        _LOGGER.info("SolarOfThingsOwnerSensor - sensor key %s, value %s", self._sensor_key, val)
+        _LOGGER.info("SolarOfThingsOwnerSensor - ts %s", ts)
+        #_LOGGER.info("SolarOfThingsOwnerSensor - sensor key %s, value %s", self._sensor_key, val)
         if val is None:
             return None
         try:
