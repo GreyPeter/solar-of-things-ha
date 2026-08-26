@@ -98,7 +98,8 @@ async def async_setup_entry(
         for key, definition in SENSOR_DEFINITIONS.items():
             if not key.endswith("ProducedQuantity"):
                 continue
-        _LOGGER.info(f"Key data  = {key}")
+                
+            _LOGGER.info(f"Key data  = {key}")
             entities.append(
                 SolarOfThingsDeviceSensor(
                     coordinator=coordinator,
