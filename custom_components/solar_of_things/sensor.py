@@ -289,7 +289,7 @@ class SolarOfThingsOwnerSensor(CoordinatorEntity, SensorEntity):
     def native_value(self):
         summary = (self.coordinator.data or {}).get("summary") or {}
         val = summary.get(self._sensor_key)
-        _LOGGER.info("SolarOfThingsOwnerSensor - key = %s summary = %s", key, summary)
+        _LOGGER.info("SolarOfThingsOwnerSensor - key = %s summary = %s", self._sensor_key, summary)
         #_LOGGER.info("SolarOfThingsOwnerSensor - sensor key %s, value %s", self._sensor_key, val)
         if val is None:
             return None
