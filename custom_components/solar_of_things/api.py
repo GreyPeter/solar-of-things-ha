@@ -679,7 +679,6 @@ class SolarOfThingsAPI:
         self._ensure_token_valid()
         resp = self.session.post(
             f"{API_BASE_URL}{API_STATION_SUMMARY}",
-            #f"?summaryCategoryKey=pvInverterElectricityQuantityClass",
             json={},
             timeout=30,
         )
@@ -690,13 +689,9 @@ class SolarOfThingsAPI:
                 f"Station summary error code={data.get('code')} "
                 f"message={data.get('message')}"
             )
-        props = data.get("data")
-        #_LOGGER.info(f"Received data  = {props}")
-        #Received data  = {'totalPower': 0.562, 'dailyProducedQuantity': 4.87, 'monthlyProducedQuantity': 98.66, 'yearlyProducedQuantity': 361.25, 'totalProducedQuantity': 361.25, 'allInstalledCapacity': 4.0, 'deviceTotal': 1, 'savingStandardCarbon': 145.95, 'co2EmissionReduction': 360.17, 'so2EmissionReduction': 10.84, 'noxEmissionReduction': 5.42}
-        dailyProducedQuantity = props.get("dailyProducedQuantity")
-        #_LOGGER.info(f"dailyProducedQuantity = {dailyProducedQuantity}")
+        summary = data.get("data")
 
-        return props
+        return summary
     
     # ─── Monthly summary (station) ─────────────────────────────────────────────
 
