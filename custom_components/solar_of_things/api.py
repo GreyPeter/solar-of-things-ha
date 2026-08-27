@@ -701,7 +701,6 @@ class SolarOfThingsAPI:
         year = now.year
         month_key = f"{year}-{str(now.month).zfill(2)}"
         month = now.month - 1
-        #_LOGGER.info(f"solar_of_things - Fetching monthly PV summary for {month_key}.")
 
         self._ensure_token_valid()
         resp = self.session.post(
@@ -732,10 +731,6 @@ class SolarOfThingsAPI:
             property = item.get('property')
             k = property.get('key')
             v = timePoints[month]['value']
-            #_LOGGER.info(f"Key= %s -- Value= %s", k, v)
-
-            #k = item.get("key") or item.get("name")
-            #v = item.get("value")
             
             if k and v is not None:
                 result[k] = v
@@ -745,7 +740,6 @@ class SolarOfThingsAPI:
         #pv_total = result.get(month_key) or result.get("pvGeneratedEnergy") or result.get("pv") or 0
         pv_total = result.get("pvGeneratedEnergy") or result.get("pv") or 0
         monthly["monthly_pv_generated"] = float(pv_total or 0)
-        #_LOGGER.info(f"monthly_pv_generated = {pv_total}")
 
         grid_import = result.get("gridImport") or result.get("buy") or 0
         monthly["monthly_grid_import"] = float(grid_import or 0)
